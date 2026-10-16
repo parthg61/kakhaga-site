@@ -9,5 +9,5 @@ class H(http.server.SimpleHTTPRequestHandler):
         self.send_header('Cache-Control','no-store')
         super().end_headers()
     def log_message(self,*a): pass
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'public'))
 http.server.ThreadingHTTPServer(('',8767),H).serve_forever()

@@ -1,5 +1,24 @@
 # Ka Kha Ga website
 
+Static site for kakhaga.co.in (a cleaned, optimised export of the original Framer site).
+
+## Layout
+- `public/` is the whole website and the only thing that gets published.
+- `hosting/` holds config for other hosts (`.htaccess` for Apache, `netlify.toml`). Not needed on Cloudflare Pages, which reads `public/_headers`.
+- `serve.py` is a local preview server.
+
+## Deploy (Cloudflare Pages, automatic)
+Pushing to `main` publishes the site. Cloudflare project settings: **no build command, output directory `public`**.
+
+## Run locally
+```bash
+python3 serve.py   # http://localhost:8767
+```
+
+---
+Older notes (paths below are relative to `public/`):
+
+
 Static export of the Ka Kha Ga Framer site (integrated communications agency), cleaned up and ready to deploy.
 
 ## Run locally
