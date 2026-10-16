@@ -1,0 +1,35 @@
+# Static Framer export. Long-cache the hashed assets, keep HTML fresh.
+[[headers]]
+  for = "/framerusercontent.com/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts.gstatic.com/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Framer routes have no trailing slash; /collection/<slug>/ would otherwise fall through to the home page.
+[[redirects]]
+  from = "/collection/:slug/"
+  to = "/collection/:slug"
+  status = 301
+  force = true
+
+# Blog posts are rendered client-side from Framer CMS data; any /collection/<slug>
+# deep link (refresh, shared URL) gets the article shell, which then resolves the slug.
+[[redirects]]
+  from = "/collection/*"
+  to = "/collection/integrated-communications-in-2026/index.html"
+  status = 200

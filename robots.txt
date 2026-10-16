@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kakhaga.co.in/sitemap.xml
